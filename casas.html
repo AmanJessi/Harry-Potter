@@ -21,56 +21,82 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link active" href="casas.html">Casas</a></li>
         <li class="nav-item"><a class="nav-link" href="hechizos.html">Hechizos</a></li>
-        <li class="nav-item"><a class="nav-link" href="quizOficial.html">Quiz Oficial</a></li>
+        <li class="nav-item"><a class="nav-link active" href="quizOficial.html">Juego</a></li>
         <li class="nav-item"><a class="nav-link" href="personajes.html">Personajes</a></li>
       </ul>
     </div>
   </nav>
 
-  <div class="container my-5 pt-5 text-center">
-    <h2 class="title-gold mb-5">LAS CUATRO CASAS DE HOGWARTS</h2>
+  <div class="container my-5 pt-5">
+    <h2 class="title-gold text-center mb-5 display-3">LAS CUATRO CASAS DE HOGWARTS</h2>
+    <p class="text-center lead mb-5">Toca una casa para escuchar su himno y ver su magia</p>
+
     <div class="row justify-content-center">
-      <div class="col-6 col-md-3 mb-4">
-        <div class="card casa-card gryffindor h-100">
-          <img src="img/GRYFFINDOR.png" class="crest" alt="Gryffindor">
-          <div class="card-body text-white"><h3>GRYFFINDOR</h3><p>Valentía • Coraje • Nobleza</p></div>
+      <!-- GRYFFINDOR -->
+      <div class="col-10 col-md-5 col-lg-3 mb-5">
+        <div class="casa-card gryffindor h-100 text-center p-4" onclick="playSound('gryffindor')">
+          <img src="img/GRYFFINDOR.png" class="crest mb-3" alt="Gryffindor">
+          <h3 class="text-white mb-3">GRYFFINDOR</h3>
+          <p class="text-white">Valentía • Coraje • Nobleza</p>
+          <div class="casa-lema mt-4">"Su audacia no tiene igual"</div>
         </div>
       </div>
-      <div class="col-6 col-md-3 mb-4">
-        <div class="card casa-card slytherin h-100">
-          <img src="img/SLYTHERIN.png" class="crest" alt="Slytherin">
-          <div class="card-body text-white"><h3>SLYTHERIN</h3><p>Astucia • Ambición</p></div>
+
+      <!-- SLYTHERIN -->
+      <div class="col-10 col-md-5 col-lg-3 mb-5">
+        <div class="casa-card slytherin h-100 text-center p-4" onclick="playSound('slytherin')">
+          <img src="img/SLYTHERIN.png" class="crest mb-3" alt="Slytherin">
+          <h3 class="text-white mb-3">SLYTHERIN</h3>
+          <p class="text-white">Astucia • Ambición • Determinación</p>
+          <div class="casa-lema mt-4">"Lograremos nuestros fines"</div>
         </div>
       </div>
-      <div class="col-6 col-md-3 mb-4">
-        <div class="card casa-card ravenclaw h-100">
-          <img src="img/RAVENCLAW.png" class="crest" alt="Ravenclaw">
-          <div class="card-body text-white"><h3>RAVENCLAW</h3><p>Inteligencia • Sabiduría</p></div>
+
+      <!-- RAVENCLAW -->
+      <div class="col-10 col-md-5 col-lg-3 mb-5">
+        <div class="casa-card ravenclaw h-100 text-center p-4" onclick="playSound('ravenclaw')">
+          <img src="img/RAVENCLAW.png" class="crest mb-3" alt="Ravenclaw">
+          <h3 class="text-white mb-3">RAVENCLAW</h3>
+          <p class="text-white">Inteligencia • Sabiduría • Creatividad</p>
+          <div class="casa-lema mt-4">"El ingenio es el mayor tesoro"</div>
         </div>
       </div>
-      <div class="col-6 col-md-3 mb-4">
-        <div class="card casa-card hufflepuff h-100">
-          <img src="img/HUFFLEPUFF.png" class="crest" alt="Hufflepuff">
-          <div class="card-body text-dark"><h3>HUFFLEPUFF</h3><p>Lealtad • Justicia</p></div>
+
+      <!-- HUFFLEPUFF -->
+      <div class="col-10 col-md-5 col-lg-3 mb-5">
+        <div class="casa-card hufflepuff h-100 text-center p-4" onclick="playSound('hufflepuff')">
+          <img src="img/HUFFLEPUFF.png" class="crest mb-3" alt="Hufflepuff">
+          <h3 class="text-dark mb-3">HUFFLEPUFF</h3>
+          <p class="text-dark">Lealtad • Justicia • Trabajo duro</p>
+          <div class="casa-lema mt-4">"La lealtad nos une"</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BOTÓN VOLVER DISCRETO Y ELEGANTE -->
-  <footer class="text-center py-5 mt-5 position-relative">
-    <div class="container position-relative">
-      <a href="index.html" class="btn-volver-elegante">
-        <span class="texto-izquierda">Expelliarmus</span>
-        <span class="texto-centro">VOLVER AL CASTILLO</span>
-        <span class="texto-derecha">Expelliarmus</span>
-        <div class="brillo"></div>
-        <div class="varita-izq"></div>
-        <div class="varita-der"></div>
-      </a>
-    </div>
+  <!-- Botón épico volver -->
+  <footer class="text-center py-5 position-relative overflow-hidden">
+    <div class="flu-powder"></div>
+    <a href="index.html" class="btn-volver-epico">
+      <span class="btn-text">
+        <span class="varita-icon">Expelliarmus</span> VOLVER AL CASTILLO <span class="varita-icon">Expelliarmus</span>
+      </span>
+      <span class="btn-glow"></span>
+      <span class="btn-sparkles"></span>
+    </a>
+    <p class="mt-4 text-muted small">Hecho con magia pura • © 2025</p>
   </footer>
 
   <script src="js/particles.js"></script>
+  <script>
+    function playSound(casa) {
+      const audio = new Audio(`sounds/${casa}.mp3`);
+      audio.play().catch(() => {
+        // Si no tienes los audios, al menos hace efecto visual
+        document.body.style.animation = "shake 0.5s";
+        setTimeout(() => document.body.style.animation = "", 500);
+      });
+    }
+  </script>
 </body>
 </html>
