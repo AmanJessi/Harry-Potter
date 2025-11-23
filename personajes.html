@@ -8,64 +8,78 @@
   <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel&family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=2025">
   <style>
-    .personajes-bg {
-      min-height: 100vh;
-      background: linear-gradient(to bottom, #0a1629, #000), url('https://wallpapercave.com/wp/wp3950640.jpg') center/cover fixed;
-      position: relative;
-    }
-    .personajes-bg::before {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(circle at top center, transparent 50%, #000 100%);
-      pointer-events: none;
-    }
+    body { background: #000; color: #fff; overflow-x: hidden; }
+    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
+    /* Cartas perfectas como en tu foto */
     .carta-personaje {
-      background: rgba(10, 10, 30, 0.85);
-      border: 3px solid #ffd700;
-      border-radius: 20px;
+      background: linear-gradient(145deg, #0a0a1a, #1c1c2e);
+      border: 4px solid #ffd700;
+      border-radius: 30px;
       overflow: hidden;
-      transition: all 0.6s;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      box-shadow: 0 0 50px rgba(255,215,0,0.5);
+      transition: all 0.6s ease;
+      height: 680px; /* Altura fija para que todas sean iguales */
+      display: flex;
+      flex-direction: column;
       position: relative;
-      height: auto; /* Arreglado para que se adapte */
     }
     .carta-personaje:hover {
-      transform: translateY(-20px) scale(1.05);
-      box-shadow: 0 30px 80px rgba(255,215,0,0.6);
+      transform: translateY(-25px) scale(1.08);
+      box-shadow: 0 0 100px rgba(255,215,0,0.9);
       border-color: #fff;
     }
     .carta-personaje::before {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(45deg, transparent 30%, rgba(255,215,0,0.1) 50%, transparent 70%);
-      transform: translateX(-100%);
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
       transition: 0.8s;
+      z-index: 1;
     }
-    .carta-personaje:hover::before { transform: translateX(100%); }
+    .carta-personaje:hover::before { left: 100%; }
 
+    /* Imagen: siempre completa, centrada y del mismo tamaño */
     .foto-personaje {
       width: 100%;
-      height: auto; /* Arreglado para ver la imagen completa */
-      object-fit: contain; /* Arreglado para no cortar la imagen */
-      filter: brightness(0.9);
-      transition: 0.5s;
-      background: #000; /* Fondo negro para que no se vea blanco si la imagen es pequeña */
+      height: 480px; /* Altura fija */
+      object-fit: contain; /* Muestra la imagen completa */
+      object-position: center;
+      background: #000;
+      padding: 20px;
+      flex-grow: 1;
     }
-    .carta-personaje:hover .foto-personaje { filter: brightness(1.2) contrast(1.1); }
 
+    /* Info abajo */
+    .info-personaje {
+      padding: 20px;
+      text-align: center;
+      background: rgba(0,0,0,0.8);
+    }
     .nombre-personaje {
       font-family: 'Harry Potter', cursive;
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       color: #ffd700;
-      text-shadow: 0 0 20px #ffd700;
+      text-shadow: 0 0 30px #ffd700;
+      margin: 0;
     }
+    .descripcion-personaje {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* Badge de casa */
     .casa-badge {
       position: absolute;
       top: 15px; right: 15px;
-      padding: 8px 20px;
-      border-radius: 50px;
+      padding: 8px 18px;
+      border-radius: 30px;
       font-weight: bold;
-      font-size: 1rem;
-      text-shadow: 0 0 10px black;
+      font-size: 0.9rem;
+      z-index: 2;
     }
     .gryffindor-badge { background: #ae0001; color: #ffd700; border: 2px solid #ffd700; }
     .slytherin-badge  { background: #1a472a; color: #aaa; border: 2px solid #aaa; }
@@ -93,110 +107,122 @@
     </div>
   </nav>
 
-  <!-- CONTENIDO -->
-  <div class="personajes-bg">
-    <div class="container py-5 mt-5">
-      <h1 class="text-center title-gold display-2 mb-5">PERSONAJES LEGENDARIOS</h1>
-      <p class="text-center text-white lead mb-5">Pasa el ratón sobre cada carta y siente la magia</p>
+  <div class="container py-5 mt-5">
+    <h1 class="text-center title-gold display-2 mb-4">PERSONAJES LEGENDARIOS</h1>
+    <p class="text-center lead text-warning mb-5">Pasa el ratón sobre cada carta y siente la magia</p>
 
-      <div class="row justify-content-center">
+    <div class="row justify-content-center">
 
-        <!-- Harry Potter -->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="carta-personaje text-center p-4 gryffindor">
-            <span class="casa-badge gryffindor-badge">Gryffindor</span>
-            <img src="img/harry%20potter.jpg" alt="Harry Potter" class="foto-personaje">
-            <h2 class="nombre-personaje mt-4">HARRY POTTER</h2>
-            <p class="text-white">El Niño que Vivió • El Elegido</p>
+      <!-- Harry Potter -->
+      <div class="col-12 col-md-6 col-lg-4 mb-5">
+        <div class="carta-personaje gryffindor">
+          <span class="casa-badge gryffindor-badge">Gryffindor</span>
+          <img src="img/harry%20potter.jpg" alt="Harry Potter" class="foto-personaje">
+          <div class="info-personaje">
+            <h2 class="nombre-personaje">HARRY POTTER</h2>
+            <p class="descripcion-personaje">El Niño que Vivió • El Elegido</p>
           </div>
         </div>
-
-        <!-- Hermione Granger -->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="carta-personaje text-center p-4 gryffindor">
-            <span class="casa-badge gryffindor-badge">Gryffindor</span>
-            <img src="img/hermione%20granger.jpg" alt="Hermione" class="foto-personaje">
-            <h2 class="nombre-personaje mt-4">HERMIONE GRANGER</h2>
-            <p class="text-white">La bruja más brillante de su edad</p>
-          </div>
-        </div>
-
-        <!-- Ron Weasley -->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="carta-personaje text-center p-4 gryffindor">
-            <span class="casa-badge gryffindor-badge">Gryffindor</span>
-            <img src="img/ron%20weasley.jpg" alt="Ron" class="foto-personaje">
-            <h2 class="nombre-personaje mt-4">RON WEASLEY</h2>
-            <p class="text-white">Leal hasta el final</p>
-          </div>
-        </div>
-
-        <!-- Draco Malfoy -->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="carta-personaje text-center p-4 slytherin">
-            <span class="casa-badge slytherin-badge">Slytherin</span>
-            <img src="img/draco%20malfoy.jpg" alt="Draco" class="foto-personaje">
-            <h2 class="nombre-personaje mt-4">DRACO MALFOY</h2>
-            <p class="text-white">Sangre pura • Ambición</p>
-          </div>
-        </div>
-
-        <!-- Albus Dumbledore -->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="carta-personaje text-center p-4 gryffindor">
-            <span class="casa-badge gryffindor-badge">Gryffindor</span>
-            <img src="img/albus%20dumbledore.jpg" alt="Dumbledore" class="foto-personaje">
-            <h2 class="nombre-personaje mt-4">ALBUS DUMBLEDORE</h2>
-            <p class="text-white">El mago más poderoso de todos los tiempos</p>
-          </div>
-        </div>
-
-        <!-- Lord Voldemort -->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="carta-personaje text-center p-4 slytherin">
-            <span class="casa-badge slytherin-badge">Slytherin</span>
-            <img src="img/lord%20voldemort.jfif" alt="Voldemort" class="foto-personaje">
-            <h2 class="nombre-personaje mt-4">LORD VOLDEMORT</h2>
-            <p class="text-white">Aquel-que-no-debe-ser-nombrado</p>
-          </div>
-        </div>
-
-        <!-- Luna Lovegood -->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="carta-personaje text-center p-4 ravenclaw">
-            <span class="casa-badge ravenclaw-badge">Ravenclaw</span>
-            <img src="img/luna%20lovegood.jpg" alt="Luna" class="foto-personaje">
-            <h2 class="nombre-personaje mt-4">LUNA LOVEGOOD</h2>
-            <p class="text-white">Soñadora • Excéntrica • Leal</p>
-          </div>
-        </div>
-
-        <!-- Severus Snape -->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="carta-personaje text-center p-4 slytherin">
-            <span class="casa-badge slytherin-badge">Slytherin</span>
-            <img src="img/severus%20snape.jfif" alt="Snape" class="foto-personaje">
-            <h2 class="nombre-personaje mt-4">SEVERUS SNAPE</h2>
-            <p class="text-white">Siempre...</p>
-          </div>
-        </div>
-
       </div>
-    </div>
 
-    <!-- BOTÓN VOLVER ÉPICO -->
-    <footer class="text-center py-5 position-relative overflow-hidden">
-      <div class="flu-powder"></div>
-      <a href="index.html" class="btn-volver-epico">
-        <span class="btn-text">
-          <span class="varita-icon">Expelliarmus</span> VOLVER AL CASTILLO <span class="varita-icon">Expelliarmus</span>
-        </span>
-        <span class="btn-glow"></span>
-        <span class="btn-sparkles"></span>
-      </a>
-      <p class="mt-4 text-muted small">Hecho con magia pura • © 2025</p>
-    </footer>
+      <!-- Hermione Granger -->
+      <div class="col-12 col-md-6 col-lg-4 mb-5">
+        <div class="carta-personaje gryffindor">
+          <span class="casa-badge gryffindor-badge">Gryffindor</span>
+          <img src="img/hermione%20granger.jpg" alt="Hermione" class="foto-personaje">
+          <div class="info-personaje">
+            <h2 class="nombre-personaje">HERMIONE GRANGER</h2>
+            <p class="descripcion-personaje">La bruja más brillante de su edad</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ron Weasley -->
+      <div class="col-12 col-md-6 col-lg-4 mb-5">
+        <div class="carta-personaje gryffindor">
+          <span class="casa-badge gryffindor-badge">Gryffindor</span>
+          <img src="img/ron%20weasley.jpg" alt="Ron" class="foto-personaje">
+          <div class="info-personaje">
+            <h2 class="nombre-personaje">RON WEASLEY</h2>
+            <p class="descripcion-personaje">Leal hasta el final</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Draco Malfoy -->
+      <div class="col-12 col-md-6 col-lg-4 mb-5">
+        <div class="carta-personaje slytherin">
+          <span class="casa-badge slytherin-badge">Slytherin</span>
+          <img src="img/draco%20malfoy.jpg" alt="Draco" class="foto-personaje">
+          <div class="info-personaje">
+            <h2 class="nombre-personaje">DRACO MALFOY</h2>
+            <p class="descripcion-personaje">Sangre pura • Ambición</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Albus Dumbledore -->
+      <div class="col-12 col-md-6 col-lg-4 mb-5">
+        <div class="carta-personaje gryffindor">
+          <span class="casa-badge gryffindor-badge">Gryffindor</span>
+          <img src="img/albus%20dumbledore.jpg" alt="Dumbledore" class="foto-personaje">
+          <div class="info-personaje">
+            <h2 class="nombre-personaje">ALBUS DUMBLEDORE</h2>
+            <p class="descripcion-personaje">El mago más poderoso de todos los tiempos</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lord Voldemort -->
+      <div class="col-12 col-md-6 col-lg-4 mb-5">
+        <div class="carta-personaje slytherin">
+          <span class="casa-badge slytherin-badge">Slytherin</span>
+          <img src="img/lord%20voldemort.jfif" alt="Voldemort" class="foto-personaje">
+          <div class="info-personaje">
+            <h2 class="nombre-personaje">LORD VOLDEMORT</h2>
+            <p class="descripcion-personaje">Aquel-que-no-debe-ser-nombrado</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Luna Lovegood -->
+      <div class="col-12 col-md-6 col-lg-4 mb-5">
+        <div class="carta-personaje ravenclaw">
+          <span class="casa-badge ravenclaw-badge">Ravenclaw</span>
+          <img src="img/luna%20lovegood.jpg" alt="Luna" class="foto-personaje">
+          <div class="info-personaje">
+            <h2 class="nombre-personaje">LUNA LOVEGOOD</h2>
+            <p class="descripcion-personaje">Soñadora • Excéntrica • Leal</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Severus Snape -->
+      <div class="col-12 col-md-6 col-lg-4 mb-5">
+        <div class="carta-personaje slytherin">
+          <span class="casa-badge slytherin-badge">Slytherin</span>
+          <img src="img/severus%20snape.jfif" alt="Snape" class="foto-personaje">
+          <div class="info-personaje">
+            <h2 class="nombre-personaje">SEVERUS SNAPE</h2>
+            <p class="descripcion-personaje">Siempre...</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <!-- BOTÓN VOLVER ÉPICO -->
+  <footer class="text-center py-5 position-relative overflow-hidden">
+    <div class="flu-powder"></div>
+    <a href="index.html" class="btn-volver-epico">
+      <span class="btn-text">
+        Expelliarmus VOLVER AL CASTILLO Expelliarmus
+      </span>
+      <span class="btn-glow"></span>
+      <span class="btn-sparkles"></span>
+    </a>
+  </footer>
 
   <script src="js/particles.js"></script>
 </body>
