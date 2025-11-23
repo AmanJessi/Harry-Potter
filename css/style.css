@@ -72,12 +72,12 @@ body {
   animation: brillo 4s ease-in-out infinite alternate;
 }
 
-/* Subtítulo */
+/* El Mundo Mágico */
 .hero .lead {
   font-family: 'Cinzel', serif;
   font-size: 5rem;
   color: #ffd700;
-  text-shadow: 0 0 20px #ffd700, 0 0 40px #b8860b, 5px 5px 15px #8b4513;
+  text-shadow: 0 0 20px #ffd700, 0 0 40px #b8860b, 5px 5px 10px #8b4513;
   margin: 20px 0 30px;
   letter-spacing: 6px;
 }
@@ -93,10 +93,17 @@ body {
   animation: varita 7s ease-in-out infinite;
 }
 
-@keyframes brillo { from { filter: brightness(1); } to { filter: brightness(1.6); } }
-@keyframes varita { 0%,100% { transform: rotate(-10deg) translateX(0); } 50% { transform: rotate(-6deg) translateX(40px); } }
+@keyframes brillo {
+  from { filter: brightness(1) drop-shadow(0 0 20px gold); }
+  to   { filter: brightness(1.6) drop-shadow(0 0 80px gold); }
+}
 
-/* Responsive Hero */
+@keyframes varita {
+  0%, 100% { transform: rotate(-10deg) translateX(0); }
+  50% { transform: rotate(-6deg) translateX(40px); }
+}
+
+/* Responsive hero */
 @media (max-width: 768px) {
   .hero .glitch { font-size: 6rem; letter-spacing: 6px; }
   .hero .lead { font-size: 3.5rem; }
@@ -116,7 +123,6 @@ body {
 .nav-link {
   color: var(--magic-gold) !important;
   font-weight: bold;
-  font-size: 1.3rem;
 }
 .nav-link:hover {
   color: white !important;
@@ -161,10 +167,10 @@ body {
   transform: translateY(-25px) scale(1.12);
   box-shadow: 0 50px 100px rgba(211,166,37,0.8);
 }
-.gryffindor  { border-top: 15px solid #9e0001; background: linear-gradient(135deg, #ae0001, #740001); }
-.slytherin    { border-top: 15px solid #2a623d; background: linear-gradient(135deg, #2a623d, #1a472a); }
-.ravenclaw   { border-top: 15px solid #0e1a40; background: linear-gradient(135deg, #222f5b, #0e1a40); }
-.hufflepuff  { border-top: 15px solid #ecb939; background: linear-gradient(135deg, #f9cb9c, #ecb939); }
+.gryffindor { border-top: 15px solid #9e0001; background: linear-gradient(135deg, #ae0001, #740001); }
+.slytherin { border-top: 15px solid #2a623d; background: linear-gradient(135deg, #2a623d, #1a472a); }
+.ravenclaw { border-top: 15px solid #0e1a40; background: linear-gradient(135deg, #222f5b, #0e1a40); }
+.hufflepuff { border-top: 15px solid #ecb939; background: linear-gradient(135deg, #f9cb9c, #ecb939); }
 .crest { width: 140px; height: 140px; object-fit: contain; margin: 20px auto; display: block; }
 
 /* ==================== HECHIZOS ==================== */
@@ -202,83 +208,52 @@ body {
   filter: drop-shadow(0 0 40px gold);
 }
 
-/* ==================== BOTÓN VOLVER ÉPICO LEGENDARIO ==================== */
-footer {
-  position: relative;
-  overflow: hidden;
-  padding: 80px 20px 50px;
-  background: linear-gradient(to top, #000, #0d1b2a);
-}
-
-.flu-powder {
-  position: absolute;
-  top: -100px; left: 0;
-  width: 100%;
-  height: 300px;
-  pointer-events: none;
-}
-.flu-powder::before, .flu-powder::after {
-  content: "";
-  position: absolute;
-  width: 100%; height: 100%;
-  background: repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(0,255,100,0.05) 30px, rgba(0,255,100,0.05) 60px);
-  animation: flu 12s linear infinite;
-}
-.flu-powder::after { animation-delay: -6s; opacity: 0.6; }
-
-@keyframes flu { 0% { transform: translateY(-200px); } 100% { transform: translateY(100vh); } }
-
-.btn-volver-epico {
-  position: relative;
-  display: inline-block;
-  padding: 20px 60px;
-  font-family: 'Harry Potter', cursive;
-  font-size: 2.5rem;
+/* ==================== BOTÓN VOLVER DISCRETO Y ELEGANTE ==================== */
+.btn-volver-elegante {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 50px;
+  background: #1a1a1a;
   color: #ffd700;
+  font-family: 'Harry Potter', cursive;
+  font-size: 2rem;
   text-decoration: none;
-  letter-spacing: 5px;
-  text-shadow: 0 0 20px #ffd700;
-  background: linear-gradient(45deg, transparent 48%, #ffd700 49%, #ffd700 51%, transparent 52%);
-  border: 4px solid #ffd700;
-  border-radius: 60px;
+  border-radius: 50px;
+  border: 2px solid #ffd700;
+  position: relative;
   overflow: hidden;
-  transition: all 0.5s;
-  animation: pulse-border 3s infinite;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  text-shadow: 0 0 10px #ffd700;
 }
 
-.btn-volver-epico:hover {
-  transform: scale(1.2) translateY(-15px);
-  color: white;
-  box-shadow: 0 0 80px rgba(255,215,0,0.9);
-  text-shadow: 0 0 40px white;
+.btn-volver-elegante:hover {
+  color: #fff;
+  background: #2a2a2a;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+  transform: translateY(-3px);
 }
 
-.btn-volver-epico .btn-glow {
+.texto-izquierda, .texto-derecha {
+  font-size: 1.3rem;
+  opacity: 0.8;
+  margin: 0 15px;
+}
+
+.texto-centro {
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.brillo {
   position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, transparent 70%);
-  animation: glow-move 8s infinite linear;
-  pointer-events: none;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.15), transparent);
+  transition: 0.7s;
 }
-
-.btn-volver-epico .btn-sparkles {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,215,0,0.15) 12px, rgba(255,215,0,0.15) 24px);
-  animation: sparkles 2s linear infinite;
-  pointer-events: none;
-}
-
-.varita-icon {
-  display: inline-block;
-  animation: varita-move 2s infinite;
-}
-
-@keyframes pulse-border { 0%,100% { box-shadow: 0 0 30px #ffd700; } 50% { box-shadow: 0 0 70px #ffd700; } }
-@keyframes glow-move { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(50%,50%) rotate(360deg); } }
-@keyframes sparkles { 0% { background-position: 0 0; } 100% { background-position: 100px 0; } }
-@keyframes varita-move { 0%,100% { transform: rotate(-20deg); } 50% { transform: rotate(20deg); } }
+.btn-volver-elegante:hover .brillo { left: 100%; }
 
 /* ==================== TÍTULOS DORADOS ==================== */
 .title-gold {
@@ -290,5 +265,5 @@ footer {
 
 /* Responsive general */
 @media (max-width: 576px) {
-  .btn-volver-epico { font-size: 1.8rem; padding: 16px 40px; }
+  .btn-volver-elegante { font-size: 1.6rem; padding: 14px 30px; }
 }

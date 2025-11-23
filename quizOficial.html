@@ -5,214 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz del Sombrero Seleccionador • Harry Potter</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel:wght@700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel&family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=2025">
-  <style>
-    /* FONDO GRAN COMEDOR + VELAS */
-    .quiz-bg {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #0a1f3d 0%, #000 70%),
-                  url('https://images.unsplash.com/photo-1606664515524-ed1285a81abd?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
-      position: relative;
-      overflow: hidden;
-    }
-    .quiz-bg::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(transparent 60%, #000 100%);
-      pointer-events: none;
-    }
-    .velas {
-      position: absolute;
-      top: 10%;
-      width: 100%;
-      text-align: center;
-      font-size: 4rem;
-      animation: flotar 12s infinite;
-      opacity: 0.7;
-    }
-    @keyframes flotar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-    /* CONTENEDOR PRINCIPAL */
-    .quiz-container {
-      background: rgba(0,0,0,0.7);
-      border: 3px solid #ffd700;
-      border-radius: 30px;
-      padding: 40px;
-      box-shadow: 0 0 80px rgba(255,215,0,0.6);
-      max-width: 900px;
-      margin: 0 auto;
-      backdrop-filter: blur(10px);
-    }
-
-    /* TÍTULOS ÉPICOS */
-    .titulo-sombrero {
-      font-family: 'Harry Potter', cursive;
-      font-size: 6rem;
-      color: #ffd700;
-      text-shadow: 0 0 30px #ffd700, 0 0 60px #b8860b;
-      animation: brillo 3s infinite alternate;
-    }
-    .pregunta-text {
-      font-family: 'Cinzel', serif;
-      font-size: 2.5rem;
-      color: #fff;
-      text-shadow: 0 0 20px #ffd700;
-      margin: 40px 0;
-    }
-
-    /* BOTONES DE RESPUESTA - ESTILO PERGAMINO MÁGICO */
-    .btn-respuesta {
-      display: block;
-      width: 80%;
-      margin: 20px auto;
-      padding: 20px;
-      font-family: 'Cinzel', serif;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #ffd700;
-      background: linear-gradient(45deg, #3e2a1f, #5d4037);
-      border: 3px solid #ffd700;
-      border-radius: 50px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-      transition: all 0.4s;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-respuesta:hover {
-      transform: translateY(-10px) scale(1.05);
-      background: linear-gradient(45deg, #ffd700, #b8860b);
-      color: black;
-      box-shadow: 0 20px 50px rgba(255,215,0,0.7);
-    }
-    .btn-respuesta::before {
-      content: "";
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: 0.7s;
-    }
-    .btn-respuesta:hover::before { left: 100%; }
-
-    /* RESULTADO FINAL */
-    .resultado-casa {
-      font-family: 'Harry Potter', cursive;
-      font-size: 8rem;
-      text-shadow: 0 0 60px currentColor;
-      animation: aparecer 2s ease-out;
-    }
-    @keyframes aparecer { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
-  </style>
 </head>
 <body>
 
   <div id="particles"></div>
 
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <a class="navbar-brand" href="index.html">Harry Potter</a>
-    <div class="collapse navbar-collapse">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" href="casas.html">Casas</a></li>
         <li class="nav-item"><a class="nav-link" href="hechizos.html">Hechizos</a></li>
-        <li class="nav-item"><a class="nav-link active" href="quizOficial.html">Juego</a></li>
+        <li class="nav-item"><a class="nav-link active" href="quizOficial.html">Quiz Oficial</a></li>
         <li class="nav-item"><a class="nav-link" href="personajes.html">Personajes</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- FONDO + VELAS -->
-  <div class="quiz-bg">
-    <div class="velas">Velas flotando</div>
-
-    <div class="container pt-5 mt-5">
-      <div class="quiz-container text-center">
-
-        <!-- SOMBRERO INICIAL -->
-        <div id="inicioQuiz">
-          <h1 class="titulo-sombrero mb-4">SOMBRERO SELECCIONADOR</h1>
-          <img src="img/sombrero.png" alt="Sombrero" class="sombrero-principal mb-4" onclick="iniciarQuiz()" style="cursor:pointer; max-width:350px;">
-          <h2 class="text-white display-4">¡Toca el sombrero para ser seleccionado!</h2>
-        </div>
-
-        <!-- PREGUNTAS -->
-        <div id="quizContainer" class="mt-5"></div>
-
-        <!-- RESULTADO -->
-        <div id="resultadoFinal" class="mt-5"></div>
-      </div>
+  <div class="container my-5 pt-5 text-center">
+    <h2 class="title-gold mb-5">QUIZ OFICIAL DEL SOMBRERO SELECCIONADOR</h2>
+    <div class="text-center">
+      <img src="img/sombrero.png" alt="Sombrero Seleccionador" id="sombreroImg" class="sombrero-principal" onclick="iniciarQuiz()">
+      <h3 class="text-white mt-4">¡Toca el Sombrero para comenzar!</h3>
+      <div id="quizContainer" class="mt-5"></div>
+      <div id="resultadoFinal" class="mt-5"></div>
     </div>
-
-    <!-- BOTÓN VOLVER ÉPICO -->
-    <footer class="text-center py-5 position-relative overflow-hidden">
-      <div class="flu-powder"></div>
-      <a href="index.html" class="btn-volver-epico">
-        <span class="btn-text">
-          <span class="varita-icon">Expelliarmus</span> VOLVER AL CASTILLO <span class="varita-icon">Expelliarmus</span>
-        </span>
-        <span class="btn-glow"></span>
-        <span class="btn-sparkles"></span>
-      </a>
-    </footer>
   </div>
 
-  <!-- SCRIPTS -->
+  <!-- BOTÓN VOLVER DISCRETO Y ELEGANTE -->
+  <footer class="text-center py-5 mt-5 position-relative">
+    <div class="container position-relative">
+      <a href="index.html" class="btn-volver-elegante">
+        <span class="texto-izquierda">Expelliarmus</span>
+        <span class="texto-centro">VOLVER AL CASTILLO</span>
+        <span class="texto-derecha">Expelliarmus</span>
+        <div class="brillo"></div>
+        <div class="varita-izq"></div>
+        <div class="varita-der"></div>
+      </a>
+    </div>
+  </footer>
+
   <script src="js/particles.js"></script>
-  <script>
-    const preguntas = [
-      { p: "¿Qué valoras más en la vida?", r: ["Valentía", "Ambición", "Inteligencia", "Lealtad"] },
-      { p: "¿Qué animal te representa?", r: ["León", "Serpiente", "Águila", "Tejón"] },
-      { p: "¿Tu mayor deseo?", r: ["Gloria eterna", "Poder absoluto", "Sabiduría infinita", "Amigos para siempre"] },
-      { p: "¿En qué destacas?", r: ["Liderazgo", "Astucia", "Creatividad", "Trabajo duro"] }
-    ];
-
-    let puntaje = { g:0, s:0, r:0, h:0 };
-    let preguntaActual = 0;
-
-    function iniciarQuiz() {
-      document.getElementById("inicioQuiz").style.display = "none";
-      puntaje = { g:0, s:0, r:0, h:0 };
-      preguntaActual = 0;
-      mostrarPregunta();
-    }
-
-    function mostrarPregunta() {
-      if (preguntaActual >= preguntas.length) {
-        mostrarResultado();
-        return;
-      }
-
-      const q = preguntas[preguntaActual];
-      let html = `<h2 class="pregunta-text">${q.p}</h2>`;
-      q.r.forEach((res, i) => {
-        const casa = i===0 ? 'g' : i===1 ? 's' : i===2 ? 'r' : 'h';
-        const colores = { g:"#ae0001", s:"#1a472a", r:"#0e1a40", h:"#ecb939" };
-        html += `<button class="btn-respuesta" style="border-color:${colores[casa]}" onclick="responder('${casa}')">${res}</button>`;
-      });
-      document.getElementById("quizContainer").innerHTML = html;
-    }
-
-    function responder(casa) {
-      puntaje[casa]++;
-      preguntaActual++;
-      mostrarPregunta();
-    }
-
-    function mostrarResultado() {
-      const max = Object.keys(puntaje).reduce((a,b) => puntaje[a] > puntaje[b] ? a : b);
-      const casas = { g:"GRYFFINDOR", s:"SLYTHERIN", r:"RAVENCLAW", h:"HUFFLEPUFF" };
-      const colores = { g:"#ae0001", s:"#1a472a", r:"#0e1a40", h:"#ecb939" };
-
-      document.getElementById("quizContainer").innerHTML = "";
-      document.getElementById("resultadoFinal").innerHTML = `
-        <h1 class="resultado-casa" style="color:${colores[max]}">
-          ¡${casas[max]}!
-        </h1>
-        <p class="text-white display-4 mt-4">El Sombrero Seleccionador ha hablado...</p>
-      `;
-    }
-  </script>
 </body>
 </html>
