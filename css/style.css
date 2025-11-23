@@ -1,20 +1,27 @@
+/* ===================================================== */
+/*  STYLE.CSS COMPLETO - HARRY POTTER 2025 ÉPICO TOTAL   */
+/* ===================================================== */
+
 :root {
-  --gryffindor: #740001; 
-  --slytherin: #1a472a; 
-  --ravenclaw: #0e1a40; 
-  --hufflepuff: #ecb939; 
+  --gryffindor: #740001;
+  --slytherin: #1a472a;
+  --ravenclaw: #0e1a40;
+  --hufflepuff: #ecb939;
   --gold: #d3a625;
+  --magic-gold: #ffd700;
 }
 
-body { 
-  background: #000; 
-  color: #eee; 
-  font-family: 'Lora', serif; 
-  min-height: 100vh; 
-  overflow-x: hidden; 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #000;
+  color: #eee;
+  font-family: 'Lora', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* ==================== HERO MÁGICO NUEVO (REEMPLAZA EL ANTERIOR) ==================== */
+/* ==================== HERO MÁGICO ÉPICO ==================== */
 .hero {
   height: 100vh;
   background: radial-gradient(ellipse at center, #1a2a44 0%, #0d1b2a 70%, #000 100%);
@@ -32,17 +39,17 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     radial-gradient(2px 2px at 40px 60px, #fff, transparent),
     radial-gradient(2px 2px at 120px 20px, #ffd700, transparent),
     radial-gradient(1px 1px at 200px 100px, #fff, transparent),
     radial-gradient(2px 2px at 80px 160px, #ffd700, transparent),
-    radial-gradient(1px 1px at 260px 50px, #fff, transparent),
-    radial-gradient(2px 2px at 160px 130px, #ffd700, transparent);
+    radial-gradient(2px 2px at 260px 50px, #fff, transparent),
+    radial-gradient(1px 1px at 160px 130px, #ffd700, transparent);
   background-repeat: repeat;
   background-size: 320px 200px;
   animation: estrellas 28s linear infinite;
-  opacity: 0.7;
+  opacity: 0.75;
   pointer-events: none;
 }
 
@@ -51,7 +58,7 @@ body {
   to   { transform: translateY(-200px); }
 }
 
-/* HARRY POTTER – Título principal con brillo de película */
+/* HARRY POTTER - Brillo de película */
 .hero .glitch {
   font-family: 'Harry Potter', 'Cinzel Decorative', cursive;
   font-size: 9.5rem;
@@ -61,27 +68,21 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 
-    0 0 30px rgba(255, 215, 0, 0.9),
-    0 0 60px rgba(255, 215, 0, 0.7),
-    0 0 100px rgba(255, 215, 0, 0.5);
+  text-shadow: 0 0 30px rgba(255,215,0,0.9), 0 0 60px rgba(255,215,0,0.7), 0 0 100px rgba(255,215,0,0.5);
   animation: brillo 4s ease-in-out infinite alternate;
 }
 
-/* El Mundo Mágico */
+/* Subtítulo */
 .hero .lead {
   font-family: 'Cinzel', serif;
   font-size: 5rem;
   color: #ffd700;
-  text-shadow: 
-    0 0 20px #ffd700,
-    0 0 40px #b8860b,
-    5px 5px 10px #8b4513;
+  text-shadow: 0 0 20px #ffd700, 0 0 40px #b8860b, 5px 5px 15px #8b4513;
   margin: 20px 0 30px;
   letter-spacing: 6px;
 }
 
-/* Movimiento de varita – animado e inclinado */
+/* Movimiento de varita */
 .varita {
   font-family: 'Cinzel', serif;
   font-size: 3.8rem;
@@ -92,38 +93,55 @@ body {
   animation: varita 7s ease-in-out infinite;
 }
 
-/* Animaciones mágicas */
-@keyframes brillo {
-  from { filter: brightness(1) drop-shadow(0 0 20px gold); }
-  to   { filter: brightness(1.6) drop-shadow(0 0 80px gold); }
-}
+@keyframes brillo { from { filter: brightness(1); } to { filter: brightness(1.6); } }
+@keyframes varita { 0%,100% { transform: rotate(-10deg) translateX(0); } 50% { transform: rotate(-6deg) translateX(40px); } }
 
-@keyframes varita {
-  0%, 100% { transform: rotate(-10deg) translateX(0); }
-  50%      { transform: rotate(-6deg) translateX(40px); }
-}
-
-/* Responsive hero */
+/* Responsive Hero */
 @media (max-width: 768px) {
   .hero .glitch { font-size: 6rem; letter-spacing: 6px; }
-  .hero .lead   { font-size: 3.5rem; }
-  .varita       { font-size: 2.5rem; }
+  .hero .lead { font-size: 3.5rem; }
+  .varita { font-size: 2.5rem; }
 }
 @media (max-width: 480px) {
   .hero .glitch { font-size: 4.5rem; }
-  .hero .lead   { font-size: 2.8rem; }
-  .varita       { font-size: 2rem; }
+  .hero .lead { font-size: 2.8rem; }
+  .varita { font-size: 2rem; }
 }
 
-/* ==================== TODO LO DEMÁS QUE YA TENÍAS (SIN CAMBIOS) ==================== */
+/* ==================== NAVBAR ==================== */
+.navbar {
+  background: linear-gradient(to bottom, #000, #111);
+  border-bottom: 5px solid var(--magic-gold);
+}
+.nav-link {
+  color: var(--magic-gold) !important;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.nav-link:hover {
+  color: white !important;
+  text-shadow: 0 0 20px var(--magic-gold);
+  transform: scale(1.1);
+}
+
+/* ==================== PARTÍCULAS ==================== */
 #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-.particle { position: absolute; background: var(--gold); border-radius: 50%; pointer-events: none; opacity: 0.8; animation: float 20s infinite linear; }
-@keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(360deg); opacity: 0; } }
+.particle {
+  position: absolute;
+  background: var(--magic-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: float 20s infinite linear;
+}
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
 
-.navbar { background: linear-gradient(to bottom, #000, #111); border-bottom: 5px solid var(--gold); }
-.nav-link { color: var(--gold) !important; font-weight: bold; }
-.nav-link:hover { color: white !important; text-shadow: 0 0 20px var(--gold); transform: scale(1.1); }
-
+/* ==================== CARRUSEL ==================== */
 .libro-img {
   height: 520px !important;
   object-fit: cover;
@@ -131,27 +149,146 @@ body {
   transition: transform 0.6s ease;
 }
 .carousel-item:hover .libro-img { transform: scale(1.05); }
-@media (max-width: 768px) { .libro-img { height: 420px !important; } }
-@media (max-width: 576px) { .libro-img { height: 360px !important; } }
 
-.casa-card { transition: all 0.6s; border-radius: 25px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.9); }
-.casa-card:hover { transform: translateY(-25px) scale(1.12); box-shadow: 0 50px 100px rgba(211,166,37,0.8); }
-.gryffindor { border-top: 15px solid #9e0001; background: linear-gradient(135deg, #ae0001, #740001); }
-.slytherin  { border-top: 15px solid #2a623d; background: linear-gradient(135deg, #2a623d, #1a472a); }
-.ravenclaw { border-top: 15px solid #0e1a40; background: linear-gradient(135deg, #222f5b, #0e1a40); }
-.hufflepuff{ border-top: 15px solid #ecb939; background: linear-gradient(135deg, #f9cb9c, #ecb939); }
+/* ==================== CASAS ==================== */
+.casa-card {
+  transition: all 0.6s;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
+.casa-card:hover {
+  transform: translateY(-25px) scale(1.12);
+  box-shadow: 0 50px 100px rgba(211,166,37,0.8);
+}
+.gryffindor  { border-top: 15px solid #9e0001; background: linear-gradient(135deg, #ae0001, #740001); }
+.slytherin    { border-top: 15px solid #2a623d; background: linear-gradient(135deg, #2a623d, #1a472a); }
+.ravenclaw   { border-top: 15px solid #0e1a40; background: linear-gradient(135deg, #222f5b, #0e1a40); }
+.hufflepuff  { border-top: 15px solid #ecb939; background: linear-gradient(135deg, #f9cb9c, #ecb939); }
 .crest { width: 140px; height: 140px; object-fit: contain; margin: 20px auto; display: block; }
 
-.hechizo { background: rgba(255,255,255,0.1); border-left: 10px solid var(--gold); padding: 25px; margin: 20px 0; border-radius: 20px; cursor: pointer; font-size: 1.5rem; transition: all 0.5s; }
-.hechizo:hover { background: rgba(211,166,37,0.4); transform: translateX(30px) scale(1.05); box-shadow: 0 0 40px rgba(211,166,37,0.8); }
-.efecto-display { font-size: 6rem; color: var(--gold); text-shadow: 0 0 40px var(--gold); animation: pulso 2s infinite; }
+/* ==================== HECHIZOS ==================== */
+.hechizo {
+  background: rgba(255,255,255,0.1);
+  border-left: 10px solid var(--magic-gold);
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.5s;
+}
+.hechizo:hover {
+  background: rgba(211,166,37,0.4);
+  transform: translateX(30px) scale(1.05);
+  box-shadow: 0 0 40px rgba(211,166,37,0.8);
+}
+.efecto-display {
+  font-size: 6rem;
+  color: var(--magic-gold);
+  text-shadow: 0 0 40px var(--magic-gold);
+  animation: pulso 2s infinite;
+}
 @keyframes pulso { 0%,100% { opacity: 0.8; } 50% { opacity: 1; text-shadow: 0 0 80px gold; } }
 
-.sombrero-principal { max-width: 420px; transition: all 1s; cursor: pointer; }
-.sombrero-principal:hover { transform: scale(1.2) rotate(10deg); filter: drop-shadow(0 0 40px gold); }
+/* ==================== QUIZ ==================== */
+.sombrero-principal {
+  max-width: 420px;
+  transition: all 1s;
+  cursor: pointer;
+}
+.sombrero-principal:hover {
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 0 40px gold);
+}
 
-.pregunta { background: rgba(0,0,0,0.8); padding: 35px; border-radius: 25px; border: 3px solid var(--gold); }
-.btn-respuesta { background: rgba(255,255,255,0.1); border: 2px solid var(--gold); color: white; margin: 12px; padding: 18px 35px; border-radius: 50px; font-size: 1.1rem; transition: 0.4s; }
-.btn-respuesta:hover { background: var(--gold); color: black; transform: scale(1.15); }
+/* ==================== BOTÓN VOLVER ÉPICO LEGENDARIO ==================== */
+footer {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 20px 50px;
+  background: linear-gradient(to top, #000, #0d1b2a);
+}
 
-.title-gold { color: var(--gold); font-family: 'Harry Potter', serif; letter-spacing: 4px; text-shadow: 0 0 20px var(--gold); }
+.flu-powder {
+  position: absolute;
+  top: -100px; left: 0;
+  width: 100%;
+  height: 300px;
+  pointer-events: none;
+}
+.flu-powder::before, .flu-powder::after {
+  content: "";
+  position: absolute;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(0,255,100,0.05) 30px, rgba(0,255,100,0.05) 60px);
+  animation: flu 12s linear infinite;
+}
+.flu-powder::after { animation-delay: -6s; opacity: 0.6; }
+
+@keyframes flu { 0% { transform: translateY(-200px); } 100% { transform: translateY(100vh); } }
+
+.btn-volver-epico {
+  position: relative;
+  display: inline-block;
+  padding: 20px 60px;
+  font-family: 'Harry Potter', cursive;
+  font-size: 2.5rem;
+  color: #ffd700;
+  text-decoration: none;
+  letter-spacing: 5px;
+  text-shadow: 0 0 20px #ffd700;
+  background: linear-gradient(45deg, transparent 48%, #ffd700 49%, #ffd700 51%, transparent 52%);
+  border: 4px solid #ffd700;
+  border-radius: 60px;
+  overflow: hidden;
+  transition: all 0.5s;
+  animation: pulse-border 3s infinite;
+}
+
+.btn-volver-epico:hover {
+  transform: scale(1.2) translateY(-15px);
+  color: white;
+  box-shadow: 0 0 80px rgba(255,215,0,0.9);
+  text-shadow: 0 0 40px white;
+}
+
+.btn-volver-epico .btn-glow {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, transparent 70%);
+  animation: glow-move 8s infinite linear;
+  pointer-events: none;
+}
+
+.btn-volver-epico .btn-sparkles {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,215,0,0.15) 12px, rgba(255,215,0,0.15) 24px);
+  animation: sparkles 2s linear infinite;
+  pointer-events: none;
+}
+
+.varita-icon {
+  display: inline-block;
+  animation: varita-move 2s infinite;
+}
+
+@keyframes pulse-border { 0%,100% { box-shadow: 0 0 30px #ffd700; } 50% { box-shadow: 0 0 70px #ffd700; } }
+@keyframes glow-move { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(50%,50%) rotate(360deg); } }
+@keyframes sparkles { 0% { background-position: 0 0; } 100% { background-position: 100px 0; } }
+@keyframes varita-move { 0%,100% { transform: rotate(-20deg); } 50% { transform: rotate(20deg); } }
+
+/* ==================== TÍTULOS DORADOS ==================== */
+.title-gold {
+  color: var(--magic-gold);
+  font-family: 'Harry Potter', serif;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px var(--magic-gold);
+}
+
+/* Responsive general */
+@media (max-width: 576px) {
+  .btn-volver-epico { font-size: 1.8rem; padding: 16px 40px; }
+}
