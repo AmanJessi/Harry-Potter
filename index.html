@@ -3,78 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Página de Harry Potter</title>
+  <title>El Mundo Mágico de Harry Potter</title>
 
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap 4.6 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-  <style>
-    body {
-      background-color: #f6f4ef;
-      font-family: 'Poppins', sans-serif;
-    }
+  <!-- Fuentes Harry Potter -->
+  <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Lora:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
-    header {
-      background: url('https://i.imgur.com/Hg1YI6u.jpeg') center/cover no-repeat;
-      height: 40vh;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-shadow: 2px 2px 6px #000;
-    }
-
-    footer {
-      background-color: #222;
-      padding: 25px;
-      text-align: center;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+  <!-- Tu CSS personalizado -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-  <!-- NAVBAR (puedes modificarlo o cambiarlo luego) -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Partículas mágicas (fondo) -->
+  <div id="particles"></div>
+
+  <!-- Navbar fija -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <a class="navbar-brand" href="#">Harry Potter</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#casas">Casas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#hechizos">Hechizos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Personajes</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- HEADER / HERO -->
-  <header>
-    <h1>Bienvenido al Mundo Mágico</h1>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>El Mundo Mágico</h1>
+      <p class="lead display-4">de Harry Potter</p>
+      <p class="varita">Movimiento de varita</p>
+    </div>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
   <div class="container my-5">
-    <h2 class="text-center">Sección Principal</h2>
-    <p class="text-center">
-      Aquí puedes empezar a añadir tus elementos de Bootstrap, como tarjetas, botones, columnas o carousels.
-    </p>
 
-    <!-- EJEMPLO DE FILA VACÍA PARA AGREGAR COSAS -->
-    <div class="row mt-4">
-      <div class="col-md-4">
-        <!-- Aquí puedes poner una card -->
+    <!-- Carrusel de libros -->
+    <div id="carouselLibros" class="carousel slide my-5" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://i.imgur.com/9Z7Z7Z7.jpg" class="d-block w-100" alt="Piedra Filosofal">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Harry Potter y la Piedra Filosofal</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://i.imgur.com/7Z7Z7Z7.jpg" class="d-block w-100" alt="Cámara Secreta">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Harry Potter y la Cámara Secreta</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://i.imgur.com/XxXxXxX.jpg" class="d-block w-100" alt="Prisionero de Azkaban">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Harry Potter y el Prisionero de Azkaban</h5>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <!-- Otra card o lo que quieras -->
-      </div>
-      <div class="col-md-4">
-        <!-- Otra cosa -->
-      </div>
+      <a class="carousel-control-prev" href="#carouselLibros" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#carouselLibros" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
     </div>
+
+    <!-- Las 4 Casas -->
+    <section id="casas">
+      <h2 class="text-center my-5 title-gold">Las Cuatro Casas de Hogwarts</h2>
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <div class="card casa-card gryffindor">
+            <div class="card-body text-center text-white">
+              <h3>Gryffindor</h3>
+              <p>Donde habitan los valientes de corazón</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card casa-card slytherin">
+            <div class="card-body text-center text-white">
+              <h3>Slytherin</h3>
+              <p>Los astutos y ambiciosos</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card casa-card ravenclaw">
+            <div class="card-body text-center text-white">
+              <h3>Ravenclaw</h3>
+              <p>Los sabios e ingeniosos</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card casa-card hufflepuff">
+            <div class="card-body text-center text-dark">
+              <h3>Hufflepuff</h3>
+              <p>Los leales y trabajadores</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hechizos interactivos -->
+    <section id="hechizos" class="my-5">
+      <h2 class="text-center my-5 title-gold">¡Lanza un Hechizo! Movimiento de varita</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="hechizo" onclick="lanzarHechizo('Lumos')">Lumos → Enciende la luz</div>
+          <div class="hechizo" onclick="lanzarHechizo('Nox')">Nox → Apaga la luz</div>
+          <div class="hechizo" onclick="lanzarHechizo('Accio')">Accio → ¡Trae algo!</div>
+          <div class="hechizo" onclick="lanzarHechizo('Wingardium Leviosa')">Wingardium Leviosa → Levitación</div>
+          <div class="hechizo" onclick="lanzarHechizo('Expecto Patronum')">Expecto Patronum → ¡Patronus!</div>
+          <div class="hechizo" onclick="lanzarHechizo('Avada Kedavra')">Avada Kedavra → (¡solo en broma!)</div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <h3 id="efectoHechizo" class="efecto-display"></h3>
+      </div>
+    </section>
+
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    Página creada con Bootstrap ✨
+  <footer class="text-center py-4">
+    <p>Hecho con magia y mucho amor por un fan de Harry Potter</p>
+    <p>© 2025 - Mundo Mágico de Harry Potter</p>
   </footer>
 
-  <!-- Bootstrap JS -->
+  <!-- Bootstrap JS + jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Tu JavaScript -->
+  <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,144 @@
+:root {
+  --gryffindor: #740001;
+  --slytherin: #1a472a;
+  --ravenclaw: #0e1a40;
+  --hufflepuff: #ecb939;
+  --gold: #d3a625;
+  --dark: #1a1a1a;
+}
+
+body {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #eee;
+  font-family: 'Lora', serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .navbar-brand {
+  font-family: 'Harry Potter', 'Cinzel', serif;
+  letter-spacing: 2px;
+}
+
+.title-gold { color: var(--gold); }
+
+/* Partículas mágicas */
+#particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.particle {
+  position: absolute;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: float 15s infinite linear;
+}
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(to bottom, #000, #111) !important;
+  border-bottom: 3px solid var(--gold);
+}
+.nav-link {
+  color: var(--gold) !important;
+  transition: all 0.3s;
+}
+.nav-link:hover {
+  color: white !important;
+  text-shadow: 0 0 10px var(--gold);
+}
+
+/* Hero */
+.hero {
+  background: url('https://i.imgur.com/Hg1YI6u.jpeg') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.65);
+}
+.hero-text {
+  z-index: 2;
+  text-shadow: 0 0 20px black;
+}
+.hero-text h1 {
+  font-size: 6rem;
+  color: var(--gold);
+}
+.varita {
+  font-size: 3.5rem;
+  animation: varita 2s infinite;
+}
+@keyframes varita {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+
+/* Cartas de casas */
+.casa-card {
+  transition: all 0.4s;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.casa-card:hover {
+  transform: translateY(-20px) scale(1.08);
+  box-shadow: 0 25px 50px rgba(211,166,37,0.7);
+}
+.gryffindor { border-top: 10px solid var(--gryffindor); background: linear-gradient(135deg, #900, #740001); }
+.slytherin  { border-top: 10px solid var(--slytherin); background: linear-gradient(135deg, #2a623d, #1a472a); }
+.ravenclaw { border-top: 10px solid var(--ravenclaw); background: linear-gradient(135deg, #222f5b, #0e1a40); }
+.hufflepuff{ border-top: 10px solid #000; background: linear-gradient(135deg, #f9cb9c, var(--hufflepuff)); }
+
+/* Hechizos */
+.hechizo {
+  cursor: pointer;
+  padding: 18px;
+  margin: 12px 0;
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  border-left: 6px solid var(--gold);
+  transition: all 0.4s;
+  font-size: 1.2rem;
+}
+.hechizo:hover {
+  background: rgba(211,166,37,0.25);
+  transform: translateX(15px);
+  box-shadow: 0 0 20px rgba(211,166,37,0.5);
+}
+
+.efecto-display {
+  min-height: 60px;
+  font-size: 2.5rem;
+  color: var(--gold);
+  text-shadow: 0 0 15px var(--gold);
+}
+
+/* Footer */
+footer {
+  background: #000;
+  border-top: 5px solid var(--gold);
+  padding: 50px 20px;
+  color: #aaa;
+}
+
+/* Carrusel */
+.carousel-item img {
+  border-radius: 20px;
+  max-height: 500px;
+  object-fit: cover;
+}
