@@ -14,40 +14,85 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <a class="navbar-brand" href="index.html">Harry Potter</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="casas.html">Casas</a></li>
-        <li class="nav-item"><a class="nav-link" href="hechizos.html">Hechizos</a></li>
-        <li class="nav-item"><a class="nav-link active" href="quizOficial.html">Quiz Oficial</a></li>
-      </ul>
-    </div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="casas.html">Casas</a></li>
+      <li class="nav-item"><a class="nav-link" href="hechizos.html">Hechizos</a></li>
+      <li class="nav-item"><a class="nav-link active" href="quizOficial.html">Quiz Oficial</a></li>
+    </ul>
   </nav>
 
-  <div class="container my-5 pt-5">
-    <section class="text-center py-5">
-      <h2 class="title-gold mb-5">QUIZ OFICIAL DEL SOMBRERO SELECCIONADOR</h2>
-      
-      <div class="text-center">
-        <img src="img/sombrero.png" alt="Sombrero Seleccionador" id="sombreroImg" class="sombrero-principal" onclick="iniciarQuiz()">
-        <h3 class="text-white mt-4">¡Toca el Sombrero para comenzar!</h3>
-        
-        <div id="quizContainer" class="mt-5"></div>
-        <div id="resultadoFinal" class="mt-5"></div>
-      </div>
-    </section>
+  <div class="container my-5 pt-5 text-center">
+    <h2 class="title-gold display-3 mb-5">SOMBRERO SELECCIONADOR</h2>
+    
+    <img src="img/sombrero.png" alt="Sombrero" class="sombrero-principal mb-4" onclick="iniciarQuiz()">
+    <h3 class="text-white mb-5">¡Toca el sombrero para ser seleccionado!</h3>
+
+    <div id="quizContainer"></div>
+    <div id="resultadoFinal" class="mt-5 display-4"></div>
   </div>
 
-  <footer class="text-center py-5 text-white">
-    <p><a href="index.html" class="text-warning">Volver al inicio</a> • © 2025</p>
+  <footer class="text-center py-5 position-relative overflow-hidden">
+    <div class="flu-powder"></div>
+    <a href="index.html" class="btn-volver-epico">
+      <span class="btn-text">
+        <span class="var2">Expelliarmus</span> VOLVER AL CASTILLO <span class="var2">Expelliarmus</span>
+      </span>
+      <span class="btn-glow"></span>
+      <span class="btn-sparkles"></span>
+    </a>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/particles.js"></script>
-  <script src="js/quiz.js"></script> <!-- Asegúrate de tener este archivo con el quiz -->
+  <script>
+    const preguntas = [
+      { p: "¿Qué valoras más?", r: ["Valentía", "Ambición", "Inteligencia", "Lealtad"] },
+      { p: "¿Animal favorito?", r: ["León", "Serpiente", "Águila", "Tejón"] },
+      { p: "¿Color preferido?", r: ["Rojo y oro", "Verde y plata", "Azul y bronce", "Amarillo y negro"] },
+      { p: "¿Qué harías con poder ilimitado?", r: ["Proteger a los débiles", "Dominar el mundo", "Descubrir secretos", "Ayudar a todos"] }
+    ];
+
+    let puntaje = { g:0, s:0, r:0, h:0 };
+    let preguntaActual = 0;
+
+    function iniciarQuiz() {
+      document.getElementById("resultadoFinal").innerHTML = "";
+      puntaje = { g:0, s:0, r:0, h:0 };
+      preguntaActual = 0;
+      mostrarPregunta();
+    }
+
+    function mostrarPregunta() {
+      if (preguntaActual >= preguntas.length) {
+        mostrarResultado();
+        return;
+      }
+
+      const q = preguntas[preguntaActual];
+      let html = `<div class="pregunta"><h3 class="mb-4">${q.p}</h3>`;
+      q.r.forEach((res, i) => {
+        const casa = i===0 ? 'g' : i===1 ? 's' : i===2 ? 'r' : 'h';
+        html += `<button class="btn-respuesta mb-3" onclick="responder('${casa}')">${res}</button><br>`;
+      });
+      html += `</div>`;
+      document.getElementById("quizContainer").innerHTML = html;
+    }
+
+    function responder(casa) {
+      puntaje[casa]++;
+      preguntaActual++;
+      mostrarPregunta();
+    }
+
+    function mostrarResultado() {
+      const max = Object.keys(puntaje).reduce((a, b) => puntaje[a] > puntaje[b] ? a : b);
+      const casas = { g: "GRYFFINDOR", s: "SLYTHERIN", r: "RAVENCLAW", h: "HUFFLEPUFF" };
+      const colores = { g: "#ae0001", s: "#1a472a", r: "#0e1a40", h: "#ecb939" };
+      
+      document.getElementById("quizContainer").innerHTML = "";
+      document.getElementById("resultadoFinal").innerHTML = 
+        `<div style="color:${colores[max]}; text-shadow: 0 0 40px ${colores[max]}">
+          ¡${casas[max]}! ¡Felicidades!
+        </div>`;
+    }
+  </script>
 </body>
 </html>

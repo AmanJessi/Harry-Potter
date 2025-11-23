@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hechizos • Harry Potter</title>
+  <title>Hechizos Mágicos • Harry Potter</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel&family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=2025">
@@ -14,30 +14,26 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <a class="navbar-brand" href="index.html">Harry Potter</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="casas.html">Casas</a></li>
-        <li class="nav-item"><a class="nav-link active" href="hechizos.html">Hechizos</a></li>
-        <li class="nav-item"><a class="nav-link" href="quizOficial.html">Quiz Oficial</a></li>
-      </ul>
-    </div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="casas.html">Casas</a></li>
+      <li class="nav-item"><a class="nav-link active" href="hechizos.html">Hechizos</a></li>
+      <li class="nav-item"><a class="nav-link" href="quizOficial.html">Quiz Oficial</a></li>
+    </ul>
   </nav>
 
   <div class="container my-5 pt-5 text-center">
-    <h2 class="title-gold mb-5">¡LANZA UN HECHIZO!</h2>
-    
+    <h2 class="title-gold display-3 mb-5">¡EMPUÑA TU VARITA!</h2>
+    <p class="lead mb-5">Haz clic en cualquier hechizo...</p>
+
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <div class="hechizo" onclick="lanzarHechizo('Lumos')">Lumos</div>
-        <div class="hechizo" onclick="lanzarHechizo('Nox')">Nox</div>
-        <div class="hechizo" onclick="lanzarHechizo('Accio')">Accio</div>
-        <div class="hechizo" onclick="lanzarHechizo('Wingardium Leviosa')">Wingardium Leviosa</div>
-        <div class="hechizo" onclick="lanzarHechizo('Expecto Patronum')">Expecto Patronum</div>
-        <div class="hechizo" onclick="lanzarHechizo('Avada Kedavra')">Avada Kedavra</div>
-        <div class="hechizo" onclick="lanzarHechizo('Expelliarmus')">Expelliarmus</div>
+        <div class="hechizo" onclick="lanzar('Lumos', '#ffd700')">Lumos</div>
+        <div class="hechizo" onclick="lanzar('Nox', '#333')">Nox</div>
+        <div class="hechizo" onclick="lanzar('Accio', '#00ff00')">Accio</div>
+        <div class="hechizo" onclick="lanzar('Wingardium Leviosa', '#00ccff')">Wingardium Leviosa</div>
+        <div class="hechizo" onclick="lanzar('Expecto Patronum', '#ffffff')">Expecto Patronum</div>
+        <div class="hechizo" onclick="lanzar('Avada Kedavra', '#00ff00')">Avada Kedavra</div>
+        <div class="hechizo" onclick="lanzar('Expelliarmus', '#ff0000')">Expelliarmus</div>
       </div>
     </div>
 
@@ -46,27 +42,28 @@
     </div>
   </div>
 
-  <footer class="text-center py-5 text-white">
-    <p><a href="index.html" class="text-warning">Volver al inicio</a> • © 2025</p>
+  <footer class="text-center py-5 position-relative overflow-hidden">
+    <div class="flu-powder"></div>
+    <a href="index.html" class="btn-volver-epico">
+      <span class="btn-text">
+        <span class="var2">Expelliarmus</span> VOLVER AL CASTILLO <span class="var2">Expelliarmus</span>
+      </span>
+      <span class="btn-glow"></span>
+      <span class="btn-sparkles"></span>
+    </a>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/particles.js"></script>
   <script>
-    // Función de hechizos (la misma que ya tenías en script.js)
-    function lanzarHechizo(hechizo) {
+    function lanzar(hechizo, color) {
       const efecto = document.getElementById("efectoHechizo");
-      efecto.textContent = hechizo === "Expecto Patronum" ? "¡PATRONUS!" : hechizo.toUpperCase();
+      efecto.textContent = hechizo.toUpperCase();
+      efecto.style.color = color;
+      efecto.style.textShadow = `0 0 60px ${color}, 0 0 120px ${color}`;
+      efecto.style.animation = "none"; setTimeout(() => efecto.style.animation = "pulso 2s infinite", 10);
       
-      // Efecto visual mágico
-      efecto.style.animation = "none";
-      setTimeout(() => efecto.style.animation = "pulso 2s infinite", 10);
-
-      // Sonido opcional (si tienes los audios)
-      // const audio = new Audio(`sounds/${hechizo.toLowerCase().replace(/ /g,'')}.mp3`);
-      // audio.play().catch(() => {});
+      // Efecto pantalla
+      document.body.style.background = color === '#00ff00' ? 'radial-gradient(circle, #006400, #000)' : '';
+      setTimeout(() => document.body.style.background = '', 1000);
     }
   </script>
 </body>
