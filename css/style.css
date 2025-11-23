@@ -19,8 +19,18 @@ body { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: #e
 .nav-link:hover { color: white !important; text-shadow: 0 0 20px var(--gold); transform: scale(1.1); }
 
 /* Hero */
-.hero { background: url('https://i.imgur.com/Hg1YI6u.jpeg') center/cover no-repeat fixed; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
-.hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
+.hero { 
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
+              url('https://images8.alphacoders.com/134/1341042.jpg') center/cover no-repeat fixed; 
+  height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  position: relative; 
+}
+.hero::before { 
+  content: none !important; /* eliminamos el ::before anterior para no duplicar */
+}
 .varita { font-size: 4.5rem; animation: varita 2.5s infinite; }
 @keyframes varita { 0%,100% { transform: rotate(-15deg); } 50% { transform: rotate(25deg); } }
 
