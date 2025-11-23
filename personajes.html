@@ -5,86 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personajes • Harry Potter</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=2025">
+  <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel&display=swap" rel="stylesheet">
   <style>
-    body { background: #000; color: #fff; overflow-x: hidden; }
+    body { background: #000; color: #fff; font-family: 'Cinzel', serif; }
     #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-    /* Cartas perfectas como en tu foto */
+    /* CARTA MÁGICA CON EFECTO NEÓN */
     .carta-personaje {
-      background: linear-gradient(145deg, #0a0a1a, #1c1c2e);
+      background: transparent;
       border: 4px solid #ffd700;
-      border-radius: 30px;
+      border-radius: 35px;
       overflow: hidden;
-      box-shadow: 0 0 50px rgba(255,215,0,0.5);
+      box-shadow: 0 0 60px rgba(255,215,0,0.7);
       transition: all 0.6s ease;
-      height: 680px; /* Altura fija para que todas sean iguales */
+      height: 700px;
       display: flex;
       flex-direction: column;
       position: relative;
+      margin: 30px 0;
     }
     .carta-personaje:hover {
-      transform: translateY(-25px) scale(1.08);
-      box-shadow: 0 0 100px rgba(255,215,0,0.9);
+      transform: translateY(-30px) scale(1.1);
+      box-shadow: 0 0 120px rgba(255,215,0,1);
       border-color: #fff;
     }
     .carta-personaje::before {
       content: '';
       position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%);
+      opacity: 0;
       transition: 0.8s;
-      z-index: 1;
+      pointer-events: none;
     }
-    .carta-personaje:hover::before { left: 100%; }
+    .carta-personaje:hover::before { opacity: 1; animation: girar 4s infinite linear; }
+    @keyframes girar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    /* Imagen: siempre completa, centrada y del mismo tamaño */
+    /* IMAGEN SIN FONDO (recorta automáticamente el blanco/gris) */
     .foto-personaje {
       width: 100%;
-      height: 480px; /* Altura fija */
-      object-fit: contain; /* Muestra la imagen completa */
+      height: 500px;
+      object-fit: contain;
       object-position: center;
-      background: #000;
-      padding: 20px;
-      flex-grow: 1;
+      filter: drop-shadow(0 0 30px #ffd700) 
+              brightness(1.1) 
+              contrast(1.2);
+      background: transparent !important;
+      mix-blend-mode: multiply; /* Quita fondos blancos */
+      isolation: isolate;
     }
 
-    /* Info abajo */
+    /* Información del personaje */
     .info-personaje {
-      padding: 20px;
+      padding: 25px;
       text-align: center;
-      background: rgba(0,0,0,0.8);
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
     }
     .nombre-personaje {
       font-family: 'Harry Potter', cursive;
-      font-size: 3.2rem;
+      font-size: 3.8rem;
       color: #ffd700;
-      text-shadow: 0 0 30px #ffd700;
+      text-shadow: 0 0 40px #ffd700, 0 0 80px #b8860b;
       margin: 0;
+      letter-spacing: 3px;
     }
     .descripcion-personaje {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #ccc;
-      margin-top: 8px;
+      margin-top: 10px;
       font-style: italic;
     }
 
-    /* Badge de casa */
+    /* Badge de casa flotante */
     .casa-badge {
       position: absolute;
-      top: 15px; right: 15px;
-      padding: 8px 18px;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 25px;
       border-radius: 30px;
       font-weight: bold;
-      font-size: 0.9rem;
-      z-index: 2;
+      font-size: 1rem;
+      z-index: 10;
+      backdrop-filter: blur(10px);
     }
-    .gryffindor-badge { background: #ae0001; color: #ffd700; border: 2px solid #ffd700; }
-    .slytherin-badge  { background: #1a472a; color: #aaa; border: 2px solid #aaa; }
-    .ravenclaw-badge { background: #0e1a40; color: #8cabd9; border: 2px solid #8cabd9; }
-    .hufflepuff-badge{ background: #ecb939; color: #000; border: 2px solid #000; }
+    .gryffindor-badge { background: rgba(174,0,1,0.9); color: #ffd700; border: 2px solid #ffd700; }
+    .slytherin-badge  { background: rgba(26,71,42,0.9); color: #aaa; border: 2px solid #aaa; }
+    .ravenclaw-badge { background: rgba(14,26,64,0.9); color: #8cabd9; border: 2px solid #8cabd9; }
   </style>
 </head>
 <body>
@@ -92,32 +104,28 @@
   <div id="particles"></div>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(0,0,0,0.8); border-bottom: 2px solid #ffd700;">
     <a class="navbar-brand" href="index.html">Harry Potter</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="casas.html">Casas</a></li>
-        <li class="nav-item"><a class="nav-link" href="hechizos.html">Hechizos</a></li>
-        <li class="nav-item"><a class="nav-link" href="quizOficial.html">Juego</a></li>
-        <li class="nav-item"><a class="nav-link active" href="personajes.html">Personajes</a></li>
+    <div class="ml-auto">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-warning" href="casas.html">Casas</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="hechizos.html">Hechizos</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="quizOficial.html">Juego</a></li>
+        <li class="nav-item"><a class="nav-link text-warning font-weight-bold" href="personajes.html">Personajes</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="container py-5 mt-5">
-    <h1 class="text-center title-gold display-2 mb-4">PERSONAJES LEGENDARIOS</h1>
-    <p class="text-center lead text-warning mb-5">Pasa el ratón sobre cada carta y siente la magia</p>
+    <h1 class="text-center display-2 text-warning mb-5" style="font-family: 'Harry Potter'; text-shadow: 0 0 50px #ffd700;">PERSONAJES LEGENDARIOS</h1>
 
     <div class="row justify-content-center">
 
       <!-- Harry Potter -->
-      <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <div class="carta-personaje gryffindor">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="carta-personaje">
           <span class="casa-badge gryffindor-badge">Gryffindor</span>
-          <img src="img/harry%20potter.jpg" alt="Harry Potter" class="foto-personaje">
+          <img src="img/harry%20potter.jpg" alt="Harry" class="foto-personaje">
           <div class="info-personaje">
             <h2 class="nombre-personaje">HARRY POTTER</h2>
             <p class="descripcion-personaje">El Niño que Vivió • El Elegido</p>
@@ -126,8 +134,8 @@
       </div>
 
       <!-- Hermione Granger -->
-      <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <div class="carta-personaje gryffindor">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="carta-personaje">
           <span class="casa-badge gryffindor-badge">Gryffindor</span>
           <img src="img/hermione%20granger.jpg" alt="Hermione" class="foto-personaje">
           <div class="info-personaje">
@@ -138,8 +146,8 @@
       </div>
 
       <!-- Ron Weasley -->
-      <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <div class="carta-personaje gryffindor">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="carta-personaje">
           <span class="casa-badge gryffindor-badge">Gryffindor</span>
           <img src="img/ron%20weasley.jpg" alt="Ron" class="foto-personaje">
           <div class="info-personaje">
@@ -150,8 +158,8 @@
       </div>
 
       <!-- Draco Malfoy -->
-      <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <div class="carta-personaje slytherin">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="carta-personaje">
           <span class="casa-badge slytherin-badge">Slytherin</span>
           <img src="img/draco%20malfoy.jpg" alt="Draco" class="foto-personaje">
           <div class="info-personaje">
@@ -162,8 +170,8 @@
       </div>
 
       <!-- Albus Dumbledore -->
-      <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <div class="carta-personaje gryffindor">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="carta-personaje">
           <span class="casa-badge gryffindor-badge">Gryffindor</span>
           <img src="img/albus%20dumbledore.jpg" alt="Dumbledore" class="foto-personaje">
           <div class="info-personaje">
@@ -174,8 +182,8 @@
       </div>
 
       <!-- Lord Voldemort -->
-      <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <div class="carta-personaje slytherin">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="carta-personaje">
           <span class="casa-badge slytherin-badge">Slytherin</span>
           <img src="img/lord%20voldemort.jfif" alt="Voldemort" class="foto-personaje">
           <div class="info-personaje">
@@ -185,44 +193,8 @@
         </div>
       </div>
 
-      <!-- Luna Lovegood -->
-      <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <div class="carta-personaje ravenclaw">
-          <span class="casa-badge ravenclaw-badge">Ravenclaw</span>
-          <img src="img/luna%20lovegood.jpg" alt="Luna" class="foto-personaje">
-          <div class="info-personaje">
-            <h2 class="nombre-personaje">LUNA LOVEGOOD</h2>
-            <p class="descripcion-personaje">Soñadora • Excéntrica • Leal</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Severus Snape -->
-      <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <div class="carta-personaje slytherin">
-          <span class="casa-badge slytherin-badge">Slytherin</span>
-          <img src="img/severus%20snape.jfif" alt="Snape" class="foto-personaje">
-          <div class="info-personaje">
-            <h2 class="nombre-personaje">SEVERUS SNAPE</h2>
-            <p class="descripcion-personaje">Siempre...</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-
-  <!-- BOTÓN VOLVER ÉPICO -->
-  <footer class="text-center py-5 position-relative overflow-hidden">
-    <div class="flu-powder"></div>
-    <a href="index.html" class="btn-volver-epico">
-      <span class="btn-text">
-        Expelliarmus VOLVER AL CASTILLO Expelliarmus
-      </span>
-      <span class="btn-glow"></span>
-      <span class="btn-sparkles"></span>
-    </a>
-  </footer>
 
   <script src="js/particles.js"></script>
 </body>
