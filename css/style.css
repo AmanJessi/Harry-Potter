@@ -19,17 +19,24 @@ body { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: #e
 .nav-link:hover { color: white !important; text-shadow: 0 0 20px var(--gold); transform: scale(1.1); }
 
 /* Hero */
-.hero { 
-  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
-              url('https://images8.alphacoders.com/134/1341042.jpg') center/cover no-repeat fixed; 
-  height: 100vh; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  position: relative; 
+.hero {
+  background: linear-gradient(135deg, 
+              #740001 0%,    /* rojo granate oscuro */
+              #c1121f 40%, 
+              #fad02c 90%, 
+              #fff3b0 100%);
+  background-size: 400% 400%;
+  animation: gryffindor 15s ease infinite;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
-.hero::before { 
-  content: none !important; /* eliminamos el ::before anterior para no duplicar */
+
+@keyframes gryffindor {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
 }
 .varita { font-size: 4.5rem; animation: varita 2.5s infinite; }
 @keyframes varita { 0%,100% { transform: rotate(-15deg); } 50% { transform: rotate(25deg); } }
