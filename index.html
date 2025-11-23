@@ -4,14 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harry Potter • Mundo Mágico Oficial</title>
+
+  <!-- Bootstrap + Fuentes -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Tu CSS principal (con el hero mágico nuevo ya incluido) -->
+  <link rel="stylesheet" href="css/style.css?v=2025">
+
 </head>
 <body>
 
+  <!-- Partículas de fondo -->
   <div id="particles"></div>
 
+  <!-- Navbar fija -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <a class="navbar-brand" href="index.html">Harry Potter</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -26,6 +33,7 @@
     </div>
   </nav>
 
+  <!-- HERO MÁGICO 2025 (nuevo diseño épico) -->
   <header id="inicio" class="hero">
     <div class="hero-text">
       <h1 class="glitch" data-text="HARRY POTTER">HARRY POTTER</h1>
@@ -34,9 +42,10 @@
     </div>
   </header>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <div class="container my-5">
 
-    <!-- CARRUSEL MEJORADO - TAMAÑO UNIFORME -->
+    <!-- CARRUSEL DE LIBROS -->
     <div id="carouselLibros" class="carousel slide my-5 shadow-lg" data-ride="carousel" data-interval="5000">
       <div class="carousel-inner rounded-lg overflow-hidden">
         <div class="carousel-item active">
@@ -64,12 +73,8 @@
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselLibros" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#carouselLibros" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
+      <a class="carousel-control-prev" href="#carouselLibros" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+      <a class="carousel-control-next" href="#carouselLibros" data-slide="next"><span class="carousel-control-next-icon"></span></a>
       <ol class="carousel-indicators">
         <li data-target="#carouselLibros" data-slide-to="0" class="active"></li>
         <li data-target="#carouselLibros" data-slide-to="1"></li>
@@ -139,10 +144,12 @@
 
   </div>
 
+  <!-- Footer -->
   <footer class="text-center py-5 text-white">
     <p>Hecho con magia pura • © 2025 Mundo Mágico de Harry Potter</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
