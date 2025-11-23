@@ -1,144 +1,60 @@
 :root {
-  --gryffindor: #740001;
-  --slytherin: #1a472a;
-  --ravenclaw: #0e1a40;
-  --hufflepuff: #ecb939;
-  --gold: #d3a625;
-  --dark: #1a1a1a;
+  --gryffindor: #740001; --slytherin: #1a472a; --ravenclaw: #0e1a40; --hufflepuff: #ecb939; --gold: #d3a625;
 }
 
-body {
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: #eee;
-  font-family: 'Lora', serif;
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-}
+body { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: #eee; font-family: 'Lora', serif; min-height: 100vh; overflow-x: hidden; }
 
-h1, h2, h3, .navbar-brand {
-  font-family: 'Harry Potter', 'Cinzel', serif;
-  letter-spacing: 2px;
-}
+/* Glitch título */
+.glitch { font-family: 'Harry Potter'; font-size: 8rem; color: var(--gold); text-shadow: 0 0 20px #fff, 0 0 30px #ff00de, 0 0 40px #0ff; animation: glitch 4s infinite; }
+@keyframes glitch { 0%,100% { text-shadow: 0 0 20px #fff, 0 0 30px #ff00de, 0 0 40px #0ff; } 15% { text-shadow: -5px 5px 0 red, 5px -5px 0 cyan; } }
 
-.title-gold { color: var(--gold); }
-
-/* Partículas mágicas */
-#particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-.particle {
-  position: absolute;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.8;
-  animation: float 15s infinite linear;
-}
-@keyframes float {
-  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-}
+/* Partículas */
+#particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.particle { position: absolute; background: var(--gold); border-radius: 50%; pointer-events: none; opacity: 0.8; animation: float 20s infinite linear; }
+@keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(360deg); opacity: 0; } }
 
 /* Navbar */
-.navbar {
-  background: linear-gradient(to bottom, #000, #111) !important;
-  border-bottom: 3px solid var(--gold);
-}
-.nav-link {
-  color: var(--gold) !important;
-  transition: all 0.3s;
-}
-.nav-link:hover {
-  color: white !important;
-  text-shadow: 0 0 10px var(--gold);
-}
+.navbar { background: linear-gradient(to bottom, #000, #111); border-bottom: 5px solid var(--gold); }
+.nav-link { color: var(--gold) !important; font-weight: bold; }
+.nav-link:hover { color: white !important; text-shadow: 0 0 20px var(--gold); transform: scale(1.1); }
 
 /* Hero */
-.hero {
-  background: url('https://i.imgur.com/Hg1YI6u.jpeg') center/cover no-repeat;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  text-align: center;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.65);
-}
-.hero-text {
-  z-index: 2;
-  text-shadow: 0 0 20px black;
-}
-.hero-text h1 {
-  font-size: 6rem;
-  color: var(--gold);
-}
-.varita {
-  font-size: 3.5rem;
-  animation: varita 2s infinite;
-}
-@keyframes varita {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(15deg); }
-}
+.hero { background: url('https://i.imgur.com/Hg1YI6u.jpeg') center/cover no-repeat fixed; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
+.hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
+.varita { font-size: 4.5rem; animation: varita 2.5s infinite; }
+@keyframes varita { 0%,100% { transform: rotate(-15deg); } 50% { transform: rotate(25deg); } }
 
-/* Cartas de casas */
-.casa-card {
-  transition: all 0.4s;
-  border: none;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-.casa-card:hover {
-  transform: translateY(-20px) scale(1.08);
-  box-shadow: 0 25px 50px rgba(211,166,37,0.7);
-}
-.gryffindor { border-top: 10px solid var(--gryffindor); background: linear-gradient(135deg, #900, #740001); }
-.slytherin  { border-top: 10px solid var(--slytherin); background: linear-gradient(135deg, #2a623d, #1a472a); }
-.ravenclaw { border-top: 10px solid var(--ravenclaw); background: linear-gradient(135deg, #222f5b, #0e1a40); }
-.hufflepuff{ border-top: 10px solid #000; background: linear-gradient(135deg, #f9cb9c, var(--hufflepuff)); }
-
-/* Hechizos */
-.hechizo {
-  cursor: pointer;
-  padding: 18px;
-  margin: 12px 0;
-  background: rgba(255,255,255,0.08);
-  border-radius: 12px;
-  border-left: 6px solid var(--gold);
-  transition: all 0.4s;
-  font-size: 1.2rem;
-}
-.hechizo:hover {
-  background: rgba(211,166,37,0.25);
-  transform: translateX(15px);
-  box-shadow: 0 0 20px rgba(211,166,37,0.5);
-}
-
-.efecto-display {
-  min-height: 60px;
-  font-size: 2.5rem;
-  color: var(--gold);
-  text-shadow: 0 0 15px var(--gold);
-}
-
-/* Footer */
-footer {
-  background: #000;
-  border-top: 5px solid var(--gold);
-  padding: 50px 20px;
-  color: #aaa;
-}
-
-/* Carrusel */
-.carousel-item img {
-  border-radius: 20px;
-  max-height: 500px;
+/* CARRUSEL MEJORADO */
+.libro-img {
+  height: 520px !important;
   object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
 }
+.carousel-item:hover .libro-img { transform: scale(1.05); }
+@media (max-width: 768px) { .libro-img { height: 420px !important; } }
+@media (max-width: 576px) { .libro-img { height: 360px !important; } }
+
+/* CASAS */
+.casa-card { transition: all 0.6s; border-radius: 25px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.9); }
+.casa-card:hover { transform: translateY(-25px) scale(1.12); box-shadow: 0 50px 100px rgba(211,166,37,0.8); }
+.gryffindor { border-top: 15px solid #9e0001; background: linear-gradient(135deg, #ae0001, #740001); }
+.slytherin  { border-top: 15px solid #2a623d; background: linear-gradient(135deg, #2a623d, #1a472a); }
+.ravenclaw { border-top: 15px solid #0e1a40; background: linear-gradient(135deg, #222f5b, #0e1a40); }
+.hufflepuff{ border-top: 15px solid #ecb939; background: linear-gradient(135deg, #f9cb9c, #ecb939); }
+.crest { width: 140px; height: 140px; object-fit: contain; margin: 20px auto; display: block; }
+
+/* Hechizos y Quiz (sin cambios) */
+.hechizo { background: rgba(255,255,255,0.1); border-left: 10px solid var(--gold); padding: 25px; margin: 20px 0; border-radius: 20px; cursor: pointer; font-size: 1.5rem; transition: all 0.5s; }
+.hechizo:hover { background: rgba(211,166,37,0.4); transform: translateX(30px) scale(1.05); box-shadow: 0 0 40px rgba(211,166,37,0.8); }
+.efecto-display { font-size: 6rem; color: var(--gold); text-shadow: 0 0 40px var(--gold); animation: pulso 2s infinite; }
+@keyframes pulso { 0%,100% { opacity: 0.8; } 50% { opacity: 1; text-shadow: 0 0 80px gold; } }
+
+.sombrero-principal { max-width: 420px; transition: all 1s; cursor: pointer; }
+.sombrero-principal:hover { transform: scale(1.2) rotate(10deg); filter: drop-shadow(0 0 40px gold); }
+
+.pregunta { background: rgba(0,0,0,0.8); padding: 35px; border-radius: 25px; border: 3px solid var(--gold); }
+.btn-respuesta { background: rgba(255,255,255,0.1); border: 2px solid var(--gold); color: white; margin: 12px; padding: 18px 35px; border-radius: 50px; font-size: 1.1rem; transition: 0.4s; }
+.btn-respuesta:hover { background: var(--gold); color: black; transform: scale(1.15); }
+
+.title-gold { color: var(--gold); font-family: 'Harry Potter', serif; letter-spacing: 4px; text-shadow: 0 0 20px var(--gold); }

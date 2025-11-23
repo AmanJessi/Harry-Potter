@@ -3,23 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Mundo Mágico de Harry Potter</title>
-
-  <!-- Bootstrap 4.6 -->
+  <title>Harry Potter • Mundo Mágico Oficial</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-  <!-- Fuentes Harry Potter -->
-  <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Lora:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Tu CSS personalizado -->
+  <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel&family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Partículas mágicas (fondo) -->
   <div id="particles"></div>
 
-  <!-- Navbar fija -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <a class="navbar-brand" href="index.html">Harry Potter</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -29,41 +21,46 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" href="#casas">Casas</a></li>
         <li class="nav-item"><a class="nav-link" href="#hechizos">Hechizos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Personajes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#quiz">Quiz Oficial</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero">
+  <header id="inicio" class="hero">
     <div class="hero-text">
-      <h1>El Mundo Mágico</h1>
-      <p class="lead display-4">de Harry Potter</p>
+      <h1 class="glitch" data-text="HARRY POTTER">HARRY POTTER</h1>
+      <p class="lead display-3">El Mundo Mágico</p>
       <p class="varita">Movimiento de varita</p>
     </div>
   </header>
 
   <div class="container my-5">
 
-    <!-- Carrusel de libros -->
-    <div id="carouselLibros" class="carousel slide my-5" data-ride="carousel">
-      <div class="carousel-inner">
+    <!-- CARRUSEL MEJORADO - TAMAÑO UNIFORME -->
+    <div id="carouselLibros" class="carousel slide my-5 shadow-lg" data-ride="carousel" data-interval="5000">
+      <div class="carousel-inner rounded-lg overflow-hidden">
         <div class="carousel-item active">
-          <img src="https://i.imgur.com/9Z7Z7Z7.jpg" class="d-block w-100" alt="Piedra Filosofal">
+          <img src="img/la piedra filosofal.avif" class="d-block w-100 libro-img" alt="La Piedra Filosofal">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Harry Potter y la Piedra Filosofal</h5>
+            <h5 class="bg-dark bg-opacity-75 px-3 py-2 rounded">La Piedra Filosofal</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://i.imgur.com/7Z7Z7Z7.jpg" class="d-block w-100" alt="Cámara Secreta">
+          <img src="img/camara secreta.jpg" class="d-block w-100 libro-img" alt="La Cámara Secreta">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Harry Potter y la Cámara Secreta</h5>
+            <h5 class="bg-dark bg-opacity-75 px-3 py-2 rounded">La Cámara Secreta</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://i.imgur.com/XxXxXxX.jpg" class="d-block w-100" alt="Prisionero de Azkaban">
+          <img src="img/el prisionero de azkaban.jpg" class="d-block w-100 libro-img" alt="El Prisionero de Azkaban">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Harry Potter y el Prisionero de Azkaban</h5>
+            <h5 class="bg-dark bg-opacity-75 px-3 py-2 rounded">El Prisionero de Azkaban</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/el caliz de fuego.jpg" class="d-block w-100 libro-img" alt="El Cáliz de Fuego">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="bg-dark bg-opacity-75 px-3 py-2 rounded">El Cáliz de Fuego</h5>
           </div>
         </div>
       </div>
@@ -73,77 +70,81 @@
       <a class="carousel-control-next" href="#carouselLibros" data-slide="next">
         <span class="carousel-control-next-icon"></span>
       </a>
+      <ol class="carousel-indicators">
+        <li data-target="#carouselLibros" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselLibros" data-slide-to="1"></li>
+        <li data-target="#carouselLibros" data-slide-to="2"></li>
+        <li data-target="#carouselLibros" data-slide-to="3"></li>
+      </ol>
     </div>
 
-    <!-- Las 4 Casas -->
-    <section id="casas">
-      <h2 class="text-center my-5 title-gold">Las Cuatro Casas de Hogwarts</h2>
-      <div class="row">
-        <div class="col-md-3 mb-4">
-          <div class="card casa-card gryffindor">
-            <div class="card-body text-center text-white">
-              <h3>Gryffindor</h3>
-              <p>Donde habitan los valientes de corazón</p>
-            </div>
+    <!-- LAS 4 CASAS -->
+    <section id="casas" class="my-5 text-center">
+      <h2 class="title-gold mb-5">LAS CUATRO CASAS DE HOGWARTS</h2>
+      <div class="row justify-content-center">
+        <div class="col-6 col-md-3 mb-4">
+          <div class="card casa-card gryffindor h-100">
+            <img src="img/GRYFFINDOR.png" class="crest" alt="Gryffindor">
+            <div class="card-body text-white"><h3>GRYFFINDOR</h3><p>Valentía • Coraje • Nobleza</p></div>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="card casa-card slytherin">
-            <div class="card-body text-center text-white">
-              <h3>Slytherin</h3>
-              <p>Los astutos y ambiciosos</p>
-            </div>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="card casa-card slytherin h-100">
+            <img src="img/SLYTHERIN.png" class="crest" alt="Slytherin">
+            <div class="card-body text-white"><h3>SLYTHERIN</h3><p>Astucia • Ambición</p></div>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="card casa-card ravenclaw">
-            <div class="card-body text-center text-white">
-              <h3>Ravenclaw</h3>
-              <p>Los sabios e ingeniosos</p>
-            </div>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="card casa-card ravenclaw h-100">
+            <img src="img/RAVENCLAW.png" class="crest" alt="Ravenclaw">
+            <div class="card-body text-white"><h3>RAVENCLAW</h3><p>Inteligencia • Sabiduría</p></div>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="card casa-card hufflepuff">
-            <div class="card-body text-center text-dark">
-              <h3>Hufflepuff</h3>
-              <p>Los leales y trabajadores</p>
-            </div>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="card casa-card hufflepuff h-100">
+            <img src="img/HUFFLEPUFF.png" class="crest" alt="Hufflepuff">
+            <div class="card-body text-dark"><h3>HUFFLEPUFF</h3><p>Lealtad • Justicia</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Hechizos interactivos -->
-    <section id="hechizos" class="my-5">
-      <h2 class="text-center my-5 title-gold">¡Lanza un Hechizo! Movimiento de varita</h2>
+    <!-- HECHIZOS -->
+    <section id="hechizos" class="my-5 text-center">
+      <h2 class="title-gold mb-5">¡LANZA UN HECHIZO!</h2>
       <div class="row justify-content-center">
-        <div class="col-lg-7">
-          <div class="hechizo" onclick="lanzarHechizo('Lumos')">Lumos → Enciende la luz</div>
-          <div class="hechizo" onclick="lanzarHechizo('Nox')">Nox → Apaga la luz</div>
-          <div class="hechizo" onclick="lanzarHechizo('Accio')">Accio → ¡Trae algo!</div>
-          <div class="hechizo" onclick="lanzarHechizo('Wingardium Leviosa')">Wingardium Leviosa → Levitación</div>
-          <div class="hechizo" onclick="lanzarHechizo('Expecto Patronum')">Expecto Patronum → ¡Patronus!</div>
-          <div class="hechizo" onclick="lanzarHechizo('Avada Kedavra')">Avada Kedavra → (¡solo en broma!)</div>
+        <div class="col-lg-8">
+          <div class="hechizo" onclick="lanzarHechizo('Lumos')">Lumos</div>
+          <div class="hechizo" onclick="lanzarHechizo('Nox')">Nox</div>
+          <div class="hechizo" onclick="lanzarHechizo('Accio')">Accio</div>
+          <div class="hechizo" onclick="lanzarHechizo('Wingardium Leviosa')">Wingardium Leviosa</div>
+          <div class="hechizo" onclick="lanzarHechizo('Expecto Patronum')">Expecto Patronum</div>
         </div>
       </div>
       <div class="text-center mt-5">
-        <h3 id="efectoHechizo" class="efecto-display"></h3>
+        <h1 id="efectoHechizo" class="efecto-display"></h1>
+      </div>
+    </section>
+
+    <!-- QUIZ DEL SOMBRERO SELECCIONADOR -->
+    <section id="quiz" class="my-5 py-5 bg-dark rounded-lg shadow-lg">
+      <h2 class="title-gold text-center mb-5">QUIZ OFICIAL DEL SOMBRERO SELECCIONADOR</h2>
+      <div class="text-center">
+        <img src="img/sombrero.png" alt="Sombrero Seleccionador" id="sombreroImg" class="sombrero-principal" onclick="iniciarQuiz()">
+        <h3 class="text-white mt-4">¡Toca el Sombrero para comenzar!</h3>
+        <div id="quizContainer" class="mt-5"></div>
+        <div id="resultadoFinal" class="mt-5"></div>
       </div>
     </section>
 
   </div>
 
-  <footer class="text-center py-4">
-    <p>Hecho con magia y mucho amor por un fan de Harry Potter</p>
-    <p>© 2025 - Mundo Mágico de Harry Potter</p>
+  <footer class="text-center py-5 text-white">
+    <p>Hecho con magia pura • © 2025 Mundo Mágico de Harry Potter</p>
   </footer>
 
-  <!-- Bootstrap JS + jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Tu JavaScript -->
   <script src="js/script.js"></script>
 </body>
 </html>
