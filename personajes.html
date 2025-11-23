@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personajes • Harry Potter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Harry+Potter&family=Cinzel&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2025">
+  <style>
+    .personajes-bg {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #0a1629, #000), url('https://wallpapercave.com/wp/wp3950640.jpg') center/cover fixed;
+      position: relative;
+    }
+    .personajes-bg::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at top center, transparent 50%, #000 100%);
+      pointer-events: none;
+    }
+
+    .carta-personaje {
+      background: rgba(10, 10, 30, 0.85);
+      border: 3px solid #ffd700;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.6s;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .carta-personaje:hover {
+      transform: translateY(-20px) scale(1.05);
+      box-shadow: 0 30px 80px rgba(255,215,0,0.6);
+      border-color: #fff;
+    }
+    .carta-personaje::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,215,0,0.1) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: 0.8s;
+    }
+    .carta-personaje:hover::before { transform: translateX(100%); }
+
+    .foto-personaje {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      filter: brightness(0.9);
+      transition: 0.5s;
+    }
+    .carta-personaje:hover .foto-personaje { filter: brightness(1.2) contrast(1.1); }
+
+    .nombre-personaje {
+      font-family: 'Harry Potter', cursive;
+      font-size: 2.8rem;
+      color: #ffd700;
+      text-shadow: 0 0 20px #ffd700;
+    }
+    .casa-badge {
+      position: absolute;
+      top: 15px; right: 15px;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-shadow: 0 0 10px black;
+    }
+    .gryffindor-badge { background: #ae0001; color: #ffd700; border: 2px solid #ffd700; }
+    .slytherin-badge  { background: #1a472a; color: #aaa; border: 2px solid #aaa; }
+    .ravenclaw-badge { background: #0e1a40; color: #8cabd9; border: 2px solid #8cabd9; }
+    .hufflepuff-badge{ background: #ecb939; color: #000; border: 2px solid #000; }
+  </style>
+</head>
+<body>
+
+  <div id="particles"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <a class="navbar-brand" href="index.html">Harry Potter</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="casas.html">Casas</a></li>
+        <li class="nav-item"><a class="nav-link" href="hechizos.html">Hechizos</a></li>
+        <li class="nav-item"><a class="nav-link" href="quizOficial.html">Quiz Oficial</a></li>
+        <li class="nav-item"><a class="nav-link active" href="personajes.html">Personajes</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <div class="personajes-bg">
+    <div class="container py-5 mt-5">
+      <h1 class="text-center title-gold display-2 mb-5">PERSONAJES LEGENDARIOS</h1>
+      <p class="text-center text-white lead mb-5">Pasa el ratón sobre cada carta y siente la magia</p>
+
+      <div class="row justify-content-center">
+
+        <!-- Harry Potter -->
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="carta-personaje text-center p-4 gryffindor">
+            <span class="casa-badge gryffindor-badge">Gryffindor</span>
+            <img src="https://i.imgur.com/2jVZ3kM.jpeg" alt="Harry Potter" class="foto-personaje">
+            <h2 class="nombre-personaje mt-4">HARRY POTTER</h2>
+            <p class="text-white">El Niño que Vivió • El Elegido</p>
+          </div>
+        </div>
+
+        <!-- Hermione Granger -->
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="carta-personaje text-center p-4 gryffindor">
+            <span class="casa-badge gryffindor-badge">Gryffindor</span>
+            <img src="https://i.imgur.com/8k3oZ8v.jpeg" alt="Hermione" class="foto-personaje">
+            <h2 class="nombre-personaje mt-4">HERMIONE GRANGER</h2>
+            <p class="text-white">La bruja más brillante de su edad</p>
+          </div>
+        </div>
+
+        <!-- Ron Weasley -->
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="carta-personaje text-center p-4 gryffindor">
+            <span class="casa-badge gryffindor-badge">Gryffindor</span>
+            <img src="https://i.imgur.com/7oV6b8P.jpeg" alt="Ron" class="foto-personaje">
+            <h2 class="nombre-personaje mt-4">RON WEASLEY</h2>
+            <p class="text-white">Leal hasta el final</p>
+          </div>
+        </div>
+
+        <!-- Draco Malfoy -->
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="carta-personaje text-center p-4 slytherin">
+            <span class="casa-badge slytherin-badge">Slytherin</span>
+            <img src="https://i.imgur.com/3g5k9oL.jpeg" alt="Draco" class="foto-personaje">
+            <h2 class="nombre-personaje mt-4">DRACO MALFOY</h2>
+            <p class="text-white">Sangre pura • Ambición</p>
+          </div>
+        </div>
+
+        <!-- Albus Dumbledore -->
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="carta-personaje text-center p-4 gryffindor">
+            <span class="casa-badge gryffindor-badge">Gryffindor</span>
+            <img src="https://i.imgur.com/9kLmN2v.jpeg" alt="Dumbledore" class="foto-personaje">
+            <h2 class="nombre-personaje mt-4">ALBUS DUMBLEDORE</h2>
+            <p class="text-white">El mago más poderoso de todos los tiempos</p>
+          </div>
+        </div>
+
+        <!-- Lord Voldemort -->
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="carta-personaje text-center p-4 slytherin">
+            <span class="casa-badge slytherin-badge">Slytherin</span>
+            <img src="https://i.imgur.com/Q5jY8kP.jpeg" alt="Voldemort" class="foto-personaje">
+            <h2 class="nombre-personaje mt-4">LORD VOLDEMORT</h2>
+            <p class="text-white">Aquel-que-no-debe-ser-nombrado</p>
+          </div>
+        </div>
+
+        <!-- Luna Lovegood -->
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="carta-personaje text-center p-4 ravenclaw">
+            <span class="casa-badge ravenclaw-badge">Ravenclaw</span>
+            <img src="https://i.imgur.com/6fR9kLm.jpeg" alt="Luna" class="foto-personaje">
+            <h2 class="nombre-personaje mt-4">LUNA LOVEGOOD</h2>
+            <p class="text-white">Soñadora • Excéntrica • Leal</p>
+          </div>
+        </div>
+
+        <!-- Severus Snape -->
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="carta-personaje text-center p-4 slytherin">
+            <span class="casa-badge slytherin-badge">Slytherin</span>
+            <img src="https://i.imgur.com/8kX9pLm.jpeg" alt="Snape" class="foto-personaje">
+            <h2 class="nombre-personaje mt-4">SEVERUS SNAPE</h2>
+            <p class="text-white">Siempre...</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOTÓN VOLVER ÉPICO -->
+    <footer class="text-center py-5 position-relative overflow-hidden">
+      <div class="flu-powder"></div>
+      <a href="index.html" class="btn-volver-epico">
+        <span class="btn-text">
+          <span class="varita-icon">Expelliarmus</span> VOLVER AL CASTILLO <span class="varita-icon">Expelliarmus</span>
+        </span>
+        <span class="btn-glow"></span>
+        <span class="btn-sparkles"></span>
+      </a>
+      <p class="mt-4 text-muted small">Hecho con magia pura • © 2025</p>
+    </footer>
+  </div>
+
+  <script src="js/particles.js"></script>
+</body>
+</html>
